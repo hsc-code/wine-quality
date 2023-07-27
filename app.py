@@ -1,0 +1,34 @@
+import os
+import pandas as pd
+import numpy as np
+import flask
+import pickle
+from flask import Flask, render_template, request
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('home.html')
+
+
+def ValuePredictor(to_predict_list):
+    to_predict = np.array(to_predict_list).reshape(1,-1)
+    loaded_model = pickle.load(open('model.pkl', 'rb'))
+    result = loaded_model.predict(to_predict)
+    return result[0]
+
+
+@app.route('/page2.html', methods=['POST'])
+def result():
+    if request.method == 'POST':
+        to_predict_list = request.form.to_dict()
+    print(to_predict_list)
+    to_predict_list = list(to_predict_list.values())
+    to_predict_list = list(map(float, to_predict_list))
+    print(to_predict_list)
+    result = ValuePredictor(to_predict_list)
+    prediction = str(result)
+    return render_template('page2.html', prediction=prediction)
+
+if __name__ == '__main__':
+    app.run()

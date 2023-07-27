@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script language="Javascript">
+      function showInput() {
+        a = {{prediction}};
+        document.getElementById("display").innerHTML = a;
+      }
+    </script>
+    <style>
+      body {
+        background-image: url("/static/image/channa.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .heading {
+        width: fit-content;
+        margin-top: 50px;
+        margin-left: 30vw;
+        text-align: center;
+        font-size: 30px;
+      }
+      .quality{
+        font-size: 25px;
+        margin-top: 70;
+        margin-left: 32vw;
+
+      }
+      .btn {
+        margin-top: 30px;
+        margin-left: 40vw;
+      }
+      p {
+        font-size: 50px;
+        margin-left: 40vw;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="heading">Click below button to view the Quality</div>
+    <br />
+    <div class="quality">
+      <ul>
+        <header>QUALITY SCORE</header>
+        <br>
+        <li>0-3,BAD QUALITY</li>
+        <li>4-6,AVERAGE QUALITY</li>
+        <li>7-8,GOOD QUALITY</li>
+        <li>9-10,EXCELLENT QUALITY</li>
+      </ul>
+    </div>
+    <button onclick="showInput()" class="btn">View Quality score</button>
+    
+    <p><span id="display"></span></p>
+  </body>
+</html>
